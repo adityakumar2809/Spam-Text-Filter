@@ -7,7 +7,7 @@ from ClassificationReport import getClassificationReport, getConfusionMatrix
 
 def filterSpamMessages():
     df = readData(path='SMSSpamCollection')
-    vectorized_data = vectorizeTextData(df['message'])
+    vectorized_data = vectorizeTextData(df)
     tfidf_transform_data = tfidfTransformData(vectorized_data)
     y_test, y_pred = classify(tfidf_transform_data, df)
     report = getClassificationReport(y_test, y_pred)
