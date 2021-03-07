@@ -21,9 +21,16 @@ def removeStopwords(text):
     clean_text_list = [
         x for x in text_list if x not in stopwords.words('english')
     ]
-    
+
     return clean_text_list
 
+
+def preprocessText(text):
+    '''Remove all puntuations and stopwords from a piece of text'''
+    unpunctuated_text = removePunctuations(text)
+    clean_text_list = removeStopwords(unpunctuated_text)
+
+    return clean_text_list
 
 
 def main():
