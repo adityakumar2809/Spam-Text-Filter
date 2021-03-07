@@ -1,5 +1,6 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from DataPreprocessing import preprocessText
+from DataInput import readData
 
 import pandas as pd
 
@@ -14,11 +15,7 @@ def vectorizeTextData(data):
 
 
 def main():
-    df = pd.read_csv(
-                       'SMSSpamCollection',
-                       sep='\t',
-                       names=["label", "message"]
-                    )
+    df = readData(path='SMSSpamCollection')
     vectorizer_transform = vectorizeTextData(df['message'])
     print(vectorizer_transform)
 
