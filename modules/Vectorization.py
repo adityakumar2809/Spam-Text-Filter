@@ -1,5 +1,5 @@
 from sklearn.feature_extraction.text import CountVectorizer
-from DataPreprocessing import preprocessText
+from .DataPreprocessing import preprocessText
 
 import pandas as pd
 

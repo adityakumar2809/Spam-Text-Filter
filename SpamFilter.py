@@ -1,8 +1,8 @@
-from DataInput import readData
-from Vectorization import vectorizeTextData
-from TFIDFTransformation import tfidfTransformData
-from Classification import classify
-from ClassificationReport import getClassificationReport, getConfusionMatrix
+from modules.DataInput import readData
+from modules.Vectorization import vectorizeTextData
+from modules.TFIDFTransformation import tfidfTransformData
+from modules.Classification import classify
+from modules.ClassificationReport import getClassificationReport, getConfusionMatrix
 
 
 def filterSpamMessages():
