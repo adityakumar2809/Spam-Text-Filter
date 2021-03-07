@@ -3,6 +3,7 @@ from sklearn.svm import SVC
 
 
 def classify(transformed_data, df):
+    '''Build an SVC Classifier and predict results'''
     x_train, x_test, y_train, y_test = train_test_split(
                                                          transformed_data,
                                                          df['message'],
