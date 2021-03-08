@@ -6,4 +6,4 @@ def tfidfTransformData(vectorized_data):
     tfidf_transformer_fit = tfidf_transformer.fit(vectorized_data)
     tfidf_transformed_data = tfidf_transformer_fit.transform(vectorized_data)
 
-    return tfidf_transformed_data
+    return tfidf_transformer_fit, tfidf_transformed_data
