@@ -29,7 +29,7 @@ def trainSpamFilterModel():
 
 
 def main():
-    filterSpamMessages()
+    trainSpamFilterModel()
 
 
 if __name__ == '__main__':
