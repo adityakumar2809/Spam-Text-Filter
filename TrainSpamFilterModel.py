@@ -13,7 +13,7 @@ def saveModel(model):
 
 
 def trainSpamFilterModel():
-    df = readData(path='Data/SMSSpamCollection')
+    df = readData(path='data/SMSSpamCollection')
     vectorized_data = vectorizeTextData(df)
     tfidf_transform_data = tfidfTransformData(vectorized_data)
     classifier, y_test, y_pred = classify(tfidf_transform_data, df)

@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def readData(path='Data/SMSSpamCollection'):
+def readData(path='data/SMSSpamCollection'):
     '''Read tab separated CSV and return the dataframe'''
     df = pd.read_csv(
                        path,
@@ -12,7 +12,7 @@ def readData(path='Data/SMSSpamCollection'):
 
 
 def main():
-    path = 'Data/SMSSpamCollection'
+    path = 'data/SMSSpamCollection'
     df = readData(path)
     print(df.describe())
 
