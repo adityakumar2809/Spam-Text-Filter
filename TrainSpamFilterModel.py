@@ -8,11 +8,13 @@ import pickle
 
 
 def saveModel(model):
+    '''Save the model'''
     filename = 'TrainedModel.sav'
     pickle.dump(model, open(filename, 'wb'))
 
 
 def trainSpamFilterModel():
+    '''Train the model on given dataset'''
     df = readData(path='data/SMSSpamCollection')
     vectorized_data = vectorizeTextData(df)
     tfidf_transform_data = tfidfTransformData(vectorized_data)
