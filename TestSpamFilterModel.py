@@ -2,6 +2,7 @@ from modules.Vectorization import vectorizeTextData
 from modules.TFIDFTransformation import tfidfTransformData
 
 import pickle
+import textwrap
 import numpy as np
 from sklearn.model_selection import train_test_split
 
@@ -13,20 +14,22 @@ def getTestData():
     return text_list
 
 
-def loadSavedModel(path='TrainedModel.sav'):
-    '''Load the saved trained model for use'''
-    loaded_model = pickle.load(open(path, 'rb'))
-    return loaded_model
+def loadSavedFile(path):
+    '''Load the saved data files for use'''
+    loaded_data = pickle.load(open(path, 'rb'))
+    return loaded_data
 
 
-def predictResult(model, input_text):
+def preprocessData(input_text, vectorizer, transformer):
+    '''Transform the data using the transformer for training data'''
+    vectorized_data = vectorizer.transform(input_text)
+    transformed_data = transformer.transform(vectorized_data)
+    return transformed_data
+
+
+def predictResult(test_data, model):
     '''Predict the result for the given data'''
-    vectorized_data = vectorizeTextData(input_text)
-    x_test = tfidfTransformData(vectorized_data)
-    
-    ## APPLY RESHAPING OF TESTING DATA HERE
-    
-    y_pred = model.predict(x_test)
+    y_pred = model.predict(test_data)
     return y_pred
 
 
@@ -37,9 +40,15 @@ def printResult(x_test, y_pred):
 
 def main():
     input_text = getTestData()
-    classifier = loadSavedModel(path='TrainedModel.sav')
-    y_pred = predictResult(classifier, input_text)
-    printResult(input_text, y_pred)
+
+    classifier = loadSavedFile(path='TrainedModel.pkl')
+    vectorizer = loadSavedFile(path='Vectorizer.pkl')
+    transformer = loadSavedFile(path='Transformer.pkl')
+
+    test_data = preprocessData(input_text, vectorizer, transformer)
+
+    predictions = predictResult(test_data, classifier)
+    printResult(input_text, predictions)
 
 
 if __name__ == '__main__':
