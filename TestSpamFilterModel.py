@@ -40,9 +40,9 @@ def printResult(x_test, y_pred):
 def main():
     input_text = getTestData()
 
-    classifier = loadSavedFile(path='TrainedModel.pkl')
-    vectorizer = loadSavedFile(path='Vectorizer.pkl')
-    transformer = loadSavedFile(path='Transformer.pkl')
+    classifier = loadSavedFile(path='data/TrainedModel.pkl')
+    vectorizer = loadSavedFile(path='data/Vectorizer.pkl')
+    transformer = loadSavedFile(path='data/Transformer.pkl')
 
     test_data = preprocessData(input_text, vectorizer, transformer)
 
