@@ -4,12 +4,20 @@ from modules.TFIDFTransformation import tfidfTransformData
 from modules.Classification import classify
 from modules.ClassificationReport import getClassificationReport, getConfusionMatrix
 
+import pickle
 
-def filterSpamMessages():
+
+def saveModel(model):
+    filename = 'TrainedModel.sav'
+    pickle.dump(model, open(filename, 'wb'))
+
+
+def trainSpamFilterModel():
     df = readData(path='Data/SMSSpamCollection')
     vectorized_data = vectorizeTextData(df)
     tfidf_transform_data = tfidfTransformData(vectorized_data)
-    y_test, y_pred = classify(tfidf_transform_data, df)
+    classifier, y_test, y_pred = classify(tfidf_transform_data, df)
+    saveModel(classifier)
     report = getClassificationReport(y_test, y_pred)
     matrix = getConfusionMatrix(y_test, y_pred)
 
