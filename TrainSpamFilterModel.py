@@ -2,7 +2,8 @@ from modules.DataInput import readData
 from modules.Vectorization import vectorizeTextData
 from modules.TFIDFTransformation import tfidfTransformData
 from modules.Classification import classify
-from modules.ClassificationReport import getClassificationReport, getConfusionMatrix
+from modules.ClassificationReport import getClassificationReport,\
+                                         getConfusionMatrix
 
 import pickle
 
@@ -29,7 +30,9 @@ def trainSpamFilterModel():
     '''Train the model on given dataset'''
     df = readData(path='data/SMSSpamCollection')
     vectorizer, vectorized_data = vectorizeTextData(df['message'])
-    tfidf_transformer, tfidf_transform_data = tfidfTransformData(vectorized_data)
+    tfidf_transformer, tfidf_transform_data = tfidfTransformData(
+                                                vectorized_data
+                                              )
     classifier, y_test, y_pred = classify(tfidf_transform_data, df)
     saveModel(classifier)
     saveVectorizer(vectorizer)

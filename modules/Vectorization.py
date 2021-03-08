@@ -1,12 +1,10 @@
 from sklearn.feature_extraction.text import CountVectorizer
 from .DataPreprocessing import preprocessText
 
-import pandas as pd
-
 
 def vectorizeTextData(data):
     '''Vectorize text DataFrame using CountVectorizer'''
-    vectorizer = CountVectorizer(analyzer = preprocessText)
+    vectorizer = CountVectorizer(analyzer=preprocessText)
     vectorizer_fit = vectorizer.fit(data)
     vectorizer_transform_data = vectorizer_fit.transform(data)
 

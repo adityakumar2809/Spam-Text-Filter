@@ -1,5 +1,6 @@
 from sklearn.feature_extraction.text import TfidfTransformer
 
+
 def tfidfTransformData(vectorized_data):
     '''Calculate Term Frequency And Inverse Document Frequency'''
     tfidf_transformer = TfidfTransformer()

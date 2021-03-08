@@ -1,6 +1,5 @@
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
-from sklearn.naive_bayes import MultinomialNB
 
 
 def classify(transformed_data, df):
@@ -11,7 +10,7 @@ def classify(transformed_data, df):
                                                          test_size=0.3,
                                                          random_state=50
                                                         )
-    
+
     classifier = SVC(kernel='linear')
     classifier_fit = classifier.fit(x_train, y_train)
 

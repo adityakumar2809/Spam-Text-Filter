@@ -1,10 +1,5 @@
-from modules.Vectorization import vectorizeTextData
-from modules.TFIDFTransformation import tfidfTransformData
-
 import pickle
 import textwrap
-import numpy as np
-from sklearn.model_selection import train_test_split
 
 
 def getTestData():
@@ -35,7 +30,11 @@ def predictResult(test_data, model):
 
 def printResult(x_test, y_pred):
     for i, text in enumerate(x_test):
-        print(textwrap.shorten(text, width=20, placeholder='...'), '\t', y_pred[i])
+        print(
+            textwrap.shorten(text, width=20, placeholder='...'),
+            '\t',
+            y_pred[i]
+        )
 
 
 def main():
