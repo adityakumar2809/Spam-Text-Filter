@@ -4,10 +4,10 @@ from .DataPreprocessing import preprocessText
 import pandas as pd
 
 
-def vectorizeTextData(df):
+def vectorizeTextData(data):
     '''Vectorize text DataFrame using CountVectorizer'''
     vectorizer = CountVectorizer(analyzer = preprocessText)
-    vectorizer_fit = vectorizer.fit(df['message'])
-    vectorizer_transform = vectorizer_fit.transform(df['message'])
+    vectorizer_fit = vectorizer.fit(data)
+    vectorizer_transform = vectorizer_fit.transform(data)
 
     return vectorizer_transform

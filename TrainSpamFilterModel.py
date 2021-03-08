@@ -16,7 +16,7 @@ def saveModel(model):
 def trainSpamFilterModel():
     '''Train the model on given dataset'''
     df = readData(path='data/SMSSpamCollection')
-    vectorized_data = vectorizeTextData(df)
+    vectorized_data = vectorizeTextData(df['message'])
     tfidf_transform_data = tfidfTransformData(vectorized_data)
     classifier, y_test, y_pred = classify(tfidf_transform_data, df)
     saveModel(classifier)
